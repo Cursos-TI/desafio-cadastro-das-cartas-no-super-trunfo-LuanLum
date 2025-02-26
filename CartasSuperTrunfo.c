@@ -1,25 +1,6 @@
 #include <stdio.h>
 #include <string.h>
 
-// Desafio Super Trunfo - Países
-// Tema 1 - Cadastro das Cartas
-// Este código inicial serve como base para o desenvolvimento do sistema de cadastro de cartas de cidades.
-// Siga os comentários para implementar cada parte do desafio.
-
-// Cada país será dividido em 8 estados, identificados com letra de A até H. Cada estado tera 4 cidades, de 1 até 4.
-// A combinação da letra do estado e o número da cidade define o código da carta (A01, A02, A03, A04, B01, B02...)
-
-    // Sugestão: Defina variáveis separadas para cada atributo da cidade.
-    // Exemplos de atributos: código da cidade, nome, população, área, PIB, número de pontos turísticos.
-
-    // Cadastro das Cartas:
-    // Sugestão: Utilize a função scanf para capturar as entradas do usuário para cada atributo.
-    // Solicite ao usuário que insira as informações de cada cidade, como o código, nome, população, área, etc.
-    
-    // Exibição dos Dados das Cartas:
-    // Sugestão: Utilize a função printf para exibir as informações das cartas cadastradas de forma clara e organizada.
-    // Exiba os valores inseridos para cada atributo da cidade, um por linha.
-
 int main() {
     // Inicializacao de variaveis:
     char pais_1[50], estado_1[50], cidade_1[50];
@@ -31,12 +12,12 @@ int main() {
     int  pontosTuristicos_2, ponto_2;
     float area_2, PIB_2;
     float densidadePopulacional_2, PIB_per_Capita_2, superPoder_2;
+    ponto_1 = ponto_2 = 0;
 
     unsigned long int populacao_1, populacao_2;
     
     // Input de dados via terminal:   
-    /*
-    printf("CARTA 1");
+    printf("CARTA 1\n");
     printf("Digite o nome do pais: "); // Brasil
     scanf(" %[^\n]", pais_1);
     printf("Digite o nome do estado: "); // Sao Paulo
@@ -52,7 +33,7 @@ int main() {
     printf("Digite o numero de pontos turísticos da cidade: "); // 13
     scanf("%d", &pontosTuristicos_1);
 
-    printf("CARTA 2");
+    printf("CARTA 2\n");
     printf("Digite o nome do pais: "); // Brasil
     scanf(" %[^\n]", pais_2);
     printf("Digite o nome do estado: "); // Sao Paulo
@@ -67,9 +48,9 @@ int main() {
     scanf("%f", &PIB_2);
     printf("Digite o numero de pontos turísticos da cidade: "); // 6
     scanf("%d", &pontosTuristicos_2);
-    */
 
     // Valores pre-definidos a fim de teste:
+    /*
     strncpy(pais_1, "Brasil", 49);
     strncpy(estado_1, "Sao Paulo", 49);
     strncpy(cidade_1, "Santos", 49);
@@ -85,6 +66,7 @@ int main() {
     populacao_2 = 287634;
     PIB_2 =  3.221;
     pontosTuristicos_2 =  6;
+    */
 
     // Calculo automatico de: densidadePopulacional, PIB_per_capita e superPoder:
     densidadePopulacional_1 = 1000 * populacao_1 / area_1;
@@ -122,31 +104,15 @@ int main() {
     printf("\n-------------------------\n");
 
     printf("-- EMBATE: %s vs %s --\n\n", cidade_1, cidade_2);
-    printf("Area: %d \n", area_1 > area_2 ? ponto_1++ : ponto_2++);
-    printf("Populacao: %d \n", populacao_1 > populacao_2 ? ponto_1++ : ponto_2++);
-    printf("PIB: %d \n", PIB_1 > PIB_2 ? ponto_1++ : ponto_2++);
-    printf("Pontos Turisticos: %d \n", pontosTuristicos_1 > pontosTuristicos_2 ? ponto_1++ : ponto_2++);
-    printf("Densidade Populacional: %d hab./km²\n", densidadePopulacional_1 < densidadePopulacional_2 ? ponto_1++ : ponto_2++);
-    printf("PIB per Capita: %d \n", PIB_per_Capita_1 > PIB_per_Capita_2 ? ponto_1++ : ponto_2++);
-    printf("Super Poder: %d \n", superPoder_1 > superPoder_2 ? ponto_1++ : ponto_2++);
+    printf("Area: %d \n", area_1 > area_2 ? (ponto_1++, 1) : (ponto_2++, 0));
+    printf("Populacao: %d \n", populacao_1 > populacao_2 ? (ponto_1++, 1) : (ponto_2++, 0));
+    printf("PIB: %d \n", PIB_1 > PIB_2 ? (ponto_1++, 1) : (ponto_2++, 0));
+    printf("Pontos Turisticos: %d \n", pontosTuristicos_1 > pontosTuristicos_2 ? (ponto_1++, 1) : (ponto_2++, 0));
+    printf("Densidade Populacional: %d \n", densidadePopulacional_1 < densidadePopulacional_2 ? (ponto_1++, 1) : (ponto_2++, 0));
+    printf("PIB per Capita: %d \n", PIB_per_Capita_1 > PIB_per_Capita_2 ? (ponto_1++, 1) : (ponto_2++, 0));
+    printf("Super Poder: %d \n", superPoder_1 > superPoder_2 ? (ponto_1++, 1) : (ponto_2++, 0));
     printf("\nPONTOS: %s: %d - %s: %d \n", cidade_1, ponto_1, cidade_2, ponto_2);
     ponto_1 > ponto_2 ? printf("Carta 1: %s vencedora\n", cidade_1) : printf("Carta 2: %s vencedora\n", cidade_2);
     
-    // DEBUGGING
-    /*
-    float density_inverse = (densidadePopulacional_1 != 0.0f) ? (1.0f / densidadePopulacional_1) : 0.0f;
-    printf("1 / densidadePopulacional_1: %e\n", density_inverse);
-    printf("density_inverse / 1000: %e\n", density_inverse / 1000.0f);
-    printf("area_1 / 1000: %f\n", area_1 / 1000.0f);
-    printf("populacao_1 / 1000: %f\n", populacao_1 / 1000.0f);
-    printf("PIB_1: %f\n", PIB_1);
-    printf("PIB_per_Capita_1 / 1000: %f\n", PIB_per_Capita_1 / 1000.0f);
-    printf("pontosTuristicos_1: %d\n", pontosTuristicos_1);
-    printf("PIB_per_Capita_1 (before division): %e\n", (1000.0f * 1000.0f * PIB_1));
-    float sum = (density_inverse / 1000.0f) + (area_1 / 1000.0f) + (populacao_1 / 1000.0f) + (PIB_1) + (PIB_per_Capita_1 / 1000.0f) + (pontosTuristicos_1);
-    printf("Sum before division: %f\n", sum);
-    superPoder_1 = sum / 10000.0f; // Instead of 100
-    */
-
     return 0;
 }
