@@ -17,6 +17,7 @@ int main() {
     unsigned long int populacao_1, populacao_2;
     
     // Input de dados via terminal:   
+    /*
     printf("CARTA 1\n");
     printf("Digite o nome do pais: "); // Brasil
     scanf(" %[^\n]", pais_1);
@@ -48,9 +49,8 @@ int main() {
     scanf("%f", &PIB_2);
     printf("Digite o numero de pontos turísticos da cidade: "); // 6
     scanf("%d", &pontosTuristicos_2);
-
+    */
     // Valores pre-definidos a fim de teste:
-    /*
     strncpy(pais_1, "Brasil", 49);
     strncpy(estado_1, "Sao Paulo", 49);
     strncpy(cidade_1, "Santos", 49);
@@ -66,7 +66,6 @@ int main() {
     populacao_2 = 287634;
     PIB_2 =  3.221;
     pontosTuristicos_2 =  6;
-    */
 
     // Calculo automatico de: densidadePopulacional, PIB_per_capita e superPoder:
     densidadePopulacional_1 = 1000 * populacao_1 / area_1;
@@ -103,6 +102,8 @@ int main() {
     printf("Super Poder:  %.3f pontos\n", superPoder_2);
     printf("\n-------------------------\n");
 
+    // EMBATE (PAUSADO NO T2_NOVATO)
+    /*
     printf("-- EMBATE: %s vs %s --\n\n", cidade_1, cidade_2);
     printf("Area: %d \n", area_1 > area_2 ? (ponto_1++, 1) : (ponto_2++, 0));
     printf("Populacao: %d \n", populacao_1 > populacao_2 ? (ponto_1++, 1) : (ponto_2++, 0));
@@ -113,6 +114,18 @@ int main() {
     printf("Super Poder: %d \n", superPoder_1 > superPoder_2 ? (ponto_1++, 1) : (ponto_2++, 0));
     printf("\nPONTOS: %s: %d - %s: %d \n", cidade_1, ponto_1, cidade_2, ponto_2);
     ponto_1 > ponto_2 ? printf("Carta 1: %s vencedora\n", cidade_1) : printf("Carta 2: %s vencedora\n", cidade_2);
+    */
+
+    // T2 Desafio Novato: Comparação de atributo
+
+    printf("Comparação de cartas (Atributo: Área):\n\n");
+    printf("Carta 1 - %s (%s): %.0f km²\n", cidade_1, estado_1, area_1);
+    printf("Carta 2 - %s (%s): %.0f km²\n", cidade_2, estado_2, area_2);
+    if(area_1 > area_2){
+        printf("RESULTADO: Carta 1: %s venceu!\n", cidade_1);
+    } else {
+        printf("RESULTADO: Carta 2: %s venceu!\n", cidade_2);
+    }
     
     return 0;
 }
